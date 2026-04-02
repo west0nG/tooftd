@@ -1,0 +1,7 @@
+.app {
+  min-height: 100vh;
+}
+
+main > section {
+  scroll-margin-top: 64px;
+}

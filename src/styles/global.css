@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --moss: #4a6741;
+  --sage: #7a9a6d;
+  --leaf: #8bc34a;
+  --cream: #faf8f4;
+  --warm-white: #f5f1eb;
+  --sand: #e8e0d4;
+  --bark: #2d2a26;
+  --stone: #9a9590;
+  --fog: rgba(74, 103, 65, 0.06);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--bark);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1 em, h2 em, h3 em {
+  font-style: italic;
+  color: var(--moss);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 36px;
+  color: var(--bark);
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--stone);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 13px 28px;
+  background: var(--moss);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--bark);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 13px 28px;
+  background: transparent;
+  color: var(--moss);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid var(--sand);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--moss);
+}
+
+.placeholder-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fog);
+  border: 1px dashed var(--sand);
+  border-radius: 8px;
+  color: var(--stone);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 28px;
+  }
+  .section-desc {
+    font-size: 13px;
+  }
+}

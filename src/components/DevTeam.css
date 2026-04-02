@@ -1,0 +1,100 @@
+.dev-team {
+  padding: 72px 48px;
+  text-align: center;
+}
+
+.dev-team__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 48px auto 0;
+}
+
+.dev-team__card {
+  background: var(--warm-white);
+  border-radius: 12px;
+  padding: 28px 20px;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.3s;
+}
+
+.dev-team__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+}
+
+.dev-team__photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  background: var(--fog);
+  border: 2px solid var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--sage);
+  font-family: 'Playfair Display', serif;
+  overflow: hidden;
+}
+
+.dev-team__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dev-team__name {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.dev-team__role-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--fog);
+  border-radius: 3px;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.dev-team__tasks {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dev-team__task {
+  font-size: 10px;
+  color: var(--stone);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.dev-team__task::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--sage);
+  font-size: 9px;
+}
+
+@media (max-width: 768px) {
+  .dev-team {
+    padding: 56px 20px;
+  }
+
+  .dev-team__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}

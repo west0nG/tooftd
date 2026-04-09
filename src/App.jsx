@@ -1,29 +1,28 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Product from './components/Product';
-import Market from './components/Market';
-import Invest from './components/Invest';
-import Story from './components/Story';
-import ProductTeam from './components/ProductTeam';
-import DevTeam from './components/DevTeam';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import ProductPage from './pages/ProductPage';
+import TeamPage from './pages/TeamPage';
+import WebsiteTeamPage from './pages/WebsiteTeamPage';
 
 function App() {
   return (
-    <div className="app">
-      <Navbar />
-      <main>
-        <Hero />
-        <Product />
-        <Market />
-        <Invest />
-        <Story />
-        <ProductTeam />
-        <DevTeam />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/product" element={<ProductPage />} />
+            <Route path="/team" element={<TeamPage />} />
+            <Route path="/website-team" element={<WebsiteTeamPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

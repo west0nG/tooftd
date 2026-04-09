@@ -1,11 +1,11 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const links = [
-  { id: 'product', label: 'Product' },
-  { id: 'market', label: 'Market' },
-  { id: 'invest', label: 'Invest' },
-  { id: 'story', label: 'Story' },
-  { id: 'team', label: 'Team' },
+  { path: '/', label: 'Home' },
+  { path: '/product', label: 'Product' },
+  { path: '/team', label: 'Team' },
+  { path: '/website-team', label: 'Website Team' },
 ];
 
 export default function Footer() {
@@ -13,8 +13,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer__logo">TOOFTD</div>
       <div className="footer__links">
-        {links.map(({ id, label }) => (
-          <a key={id} href={`#${id}`}>{label}</a>
+        {links.map(({ path, label }) => (
+          <Link key={path} to={path}>{label}</Link>
         ))}
       </div>
       <p className="footer__copy">

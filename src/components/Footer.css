@@ -67,30 +67,22 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  height: clamp(100px, 16vw, 220px);
+  height: clamp(110px, 15vw, 220px);
   display: flex;
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
   pointer-events: none;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 .footer__wordmark {
-  font-family: var(--font-head);
-  font-weight: 400;
-  font-size: clamp(280px, 38vw, 580px);
-  line-height: 0.85;
-  letter-spacing: -0.01em;
-  color: transparent;
-  background-image: url('/images/product-main.png');
-  background-size: 240% 260%;
-  background-position: center 35%;
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  white-space: nowrap;
-  transform: translateY(-3%);
+  width: 100%;
+  max-width: 1506px;
+  height: auto;
+  display: block;
+  filter: url("#black-key");
+  transform: translateY(-2%);
 }
 
 @supports not (background-clip: text) {

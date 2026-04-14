@@ -39,7 +39,11 @@ export default function Footer() {
         </div>
 
         <div className="footer__watermark" aria-hidden="true">
-          <span className="footer__wordmark">Tooftd</span>
+          <img
+            src="/images/tooftd-mask.png"
+            alt=""
+            className="footer__wordmark"
+          />
         </div>
       </div>
     </footer>

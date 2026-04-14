@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -8,8 +8,6 @@ import CompetitiveAnalysisPage from './pages/CompetitiveAnalysisPage';
 import PreorderPage from './pages/PreorderPage';
 
 function Layout() {
-  const location = useLocation();
-  const isBTS = location.pathname === '/bts';
   return (
     <div className="app">
       <Navbar />
@@ -22,7 +20,7 @@ function Layout() {
           <Route path="*" element={<HomePage />} />
         </Routes>
       </main>
-      <Footer variant={isBTS ? 'dark' : 'light'} />
+      <Footer />
     </div>
   );
 }

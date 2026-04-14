@@ -9,17 +9,24 @@ export default function HomePage() {
   return (
     <div className="home">
       <section className="home-hero">
-        <div className="home-hero__bg" aria-hidden="true" />
-        <div className="home-hero__content">
+        <div className="home-hero__stage">
           <img
-            src="/images/logo-ft.png"
-            alt="Tooftd"
-            className="home-hero__logo"
+            src="/images/product-gradient.png"
+            alt=""
+            aria-hidden="true"
+            className="home-hero__platform"
           />
-          <Link to="/preorder" className="btn">
-            <span>Preorder</span>
-            <ArrowRight className="btn__arrow" />
-          </Link>
+          <div className="home-hero__content">
+            <img
+              src="/images/logo-ft.png"
+              alt="Tooftd"
+              className="home-hero__logo"
+            />
+            <Link to="/preorder" className="btn">
+              <span>Preorder</span>
+              <ArrowRight className="btn__arrow" />
+            </Link>
+          </div>
         </div>
       </section>
 

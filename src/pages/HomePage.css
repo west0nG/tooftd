@@ -3,90 +3,113 @@
 /* Hero ----------------------------------------------------- */
 .home-hero {
   position: relative;
-  min-height: 720px;
-  padding: 120px 24px;
+  padding: 60px 24px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  background: linear-gradient(180deg, #DFF5D4 0%, #C9EEBB 100%);
 }
 
-.home-hero__bg {
+.home-hero__stage {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 16/9;
+}
+
+.home-hero__platform {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(167, 232, 147, 0.65) 0%, rgba(76, 187, 199, 0.55) 100%),
-    url('/images/product-gradient.png') center/cover no-repeat;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center 58%;
+  filter: url("#black-key");
+  z-index: 1;
 }
 
 .home-hero__content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 586px;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .home-hero__logo {
-  width: 100%;
-  max-width: 586px;
+  width: 58%;
+  max-width: 640px;
   height: auto;
   display: block;
-  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.18));
+  mix-blend-mode: multiply;
 }
 
-/* Block (square + copy + strip) ---------------------------- */
+/* Middle block -------------------------------------------- */
 .home-block {
   max-width: 1200px;
   margin: 0 auto;
   padding: 120px 24px 80px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 40px;
 }
 
 .home-block__square {
   width: 100%;
-  aspect-ratio: 1011/680;
-  border-radius: 4px;
-  overflow: hidden;
+  max-width: 900px;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.home-block__square img,
-.home-block__strip img {
+.home-block__square img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  filter: url("#black-key");
   display: block;
 }
 
 .home-block__copy {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-width: 544px;
+  gap: 18px;
+  align-items: center;
+  text-align: center;
+  max-width: 520px;
 }
 
 .home-block__copy .body-text {
-  max-width: 407px;
+  max-width: 420px;
 }
 
 .home-block__strip {
   width: 100%;
+  max-width: 1011px;
   aspect-ratio: 1011/367;
-  border-radius: 4px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-block__strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: url("#black-key");
+  display: block;
 }
 
 /* Split ---------------------------------------------------- */
 .home-split {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 24px 40px;
+  padding: 60px 24px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
@@ -96,8 +119,10 @@
 .home-split__copy {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-width: 544px;
+  gap: 18px;
+  max-width: 460px;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .home-split__photo {
@@ -108,7 +133,7 @@
   box-shadow: var(--shadow-soft);
   padding: 8px;
   aspect-ratio: 4/5;
-  max-height: 860px;
+  max-height: 720px;
 }
 
 .home-split__photo img {
@@ -119,7 +144,9 @@
 }
 
 @media (max-width: 980px) {
-  .home-hero { min-height: 520px; padding: 80px 20px; }
+  .home-hero { padding: 40px 20px 20px; }
+  .home-hero__stage { aspect-ratio: 4/3; }
+  .home-hero__logo { width: 75%; }
   .home-split { grid-template-columns: 1fr; gap: 32px; }
   .home-split__photo { aspect-ratio: 4/3; max-height: none; }
 }

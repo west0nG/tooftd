@@ -29,8 +29,9 @@
 .bts-section__badge img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  filter: url("#black-key");
 }
 
 .bts-section__badge--logo {
@@ -44,6 +45,8 @@
   height: 100%;
   width: auto;
   object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: none;
 }
 
 .bts-section__title {
@@ -70,7 +73,7 @@
   aspect-ratio: 280/340;
   border-radius: 16px;
   background: linear-gradient(
-    180deg,
+    0deg,
     rgba(250, 250, 250, 0) 57%,
     rgba(184, 218, 254, 1) 100%
   );

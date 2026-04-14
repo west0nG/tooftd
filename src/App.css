@@ -1,7 +1,10 @@
 .app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
 }
 
-main > section {
-  scroll-margin-top: 64px;
+.app > main {
+  flex: 1;
 }

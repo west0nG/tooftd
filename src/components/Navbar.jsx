@@ -1,51 +1,60 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import ArrowRight from './ArrowRight';
 import './Navbar.css';
 
 const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/product', label: 'Product' },
-  { path: '/team', label: 'Team' },
-  { path: '/website-team', label: 'Website Team' },
+  { path: '/bts', label: 'Team' },
+  { path: '/competitive-analysis', label: 'Competitive analysis' },
+  { path: '/#business', label: 'Business' },
+  { path: '/bts', label: 'BTS' },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
     setMenuOpen(false);
-    window.scrollTo(0, 0);
+    if (!location.hash) window.scrollTo(0, 0);
   }, [location]);
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+    <nav className="navbar">
       <div className="navbar__inner">
-        <Link className="navbar__logo" to="/">TOOFTD</Link>
+        <Link className="navbar__logo" to="/" aria-label="Tooftd home">
+          Tooftd
+        </Link>
+
         <button
-          className={`navbar__hamburger ${menuOpen ? 'navbar__hamburger--open' : ''}`}
+          className={`navbar__hamburger ${menuOpen ? 'is-open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <span /><span /><span />
         </button>
-        <div className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
-          {navLinks.map(({ path, label }) => (
-            <Link
-              key={path}
-              className={`navbar__link ${location.pathname === path ? 'navbar__link--active' : ''}`}
-              to={path}
-            >
-              {label}
-            </Link>
-          ))}
+
+        <div className={`navbar__cluster ${menuOpen ? 'is-open' : ''}`}>
+          <div className="navbar__pill">
+            {navLinks.map(({ path, label }, i) => (
+              <NavLink
+                key={i}
+                to={path}
+                className={({ isActive }) =>
+                  `navbar__link${isActive && !path.includes('#') ? ' navbar__link--active' : ''}`
+                }
+                end
+              >
+                {label}
+              </NavLink>
+            ))}
+          </div>
+
+          <Link to="/preorder" className="btn navbar__cta">
+            <span>Preorder</span>
+            <ArrowRight className="btn__arrow" />
+          </Link>
         </div>
       </div>
     </nav>

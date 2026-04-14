@@ -3,6 +3,13 @@ import './CompetitiveAnalysisPage.css';
 
 const LOREM_LONG = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor.';
 
+const COMPETITOR_THUMBS = [
+  '/images/competitor-1.png',
+  '/images/competitor-2.png',
+  '/images/competitor-3.png',
+  '/images/competitor-1.png',
+];
+
 export default function CompetitiveAnalysisPage() {
   return (
     <div className="ca">
@@ -12,25 +19,11 @@ export default function CompetitiveAnalysisPage() {
             Competitive analysis
           </h2>
           <div className="ca-matrix-frame">
-            <div className="ca-matrix-board" aria-hidden="true">
-              <div className="ca-matrix-board__axis ca-matrix-board__axis--top">
-                Communal
-              </div>
-              <div className="ca-matrix-board__axis ca-matrix-board__axis--bottom">
-                Solo
-              </div>
-              <div className="ca-matrix-board__axis ca-matrix-board__axis--left">
-                Static
-              </div>
-              <div className="ca-matrix-board__axis ca-matrix-board__axis--right">
-                Playful
-              </div>
-              <div className="ca-matrix-board__tiles">
-                {Array.from({ length: 28 }).map((_, i) => (
-                  <span key={i} className={`ca-tile ca-tile--${(i % 6) + 1}`} />
-                ))}
-              </div>
-            </div>
+            <img
+              src="/images/competitor-matrix.png"
+              alt="Competitive analysis matrix"
+              className="ca-matrix-frame__img"
+            />
           </div>
         </section>
 
@@ -40,10 +33,11 @@ export default function CompetitiveAnalysisPage() {
             <p className="body-text">{LOREM_LONG}</p>
           </div>
           <div className="ca-nothing__thumbs">
-            <div className="ca-thumb ca-thumb--1" aria-hidden="true" />
-            <div className="ca-thumb ca-thumb--2" aria-hidden="true" />
-            <div className="ca-thumb ca-thumb--3" aria-hidden="true" />
-            <div className="ca-thumb ca-thumb--4" aria-hidden="true" />
+            {COMPETITOR_THUMBS.map((src, i) => (
+              <div key={i} className="ca-thumb">
+                <img src={src} alt="" />
+              </div>
+            ))}
           </div>
         </section>
 

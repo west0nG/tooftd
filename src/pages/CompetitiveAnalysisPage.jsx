@@ -7,7 +7,6 @@ const COMPETITOR_THUMBS = [
   '/images/competitor-1.png',
   '/images/competitor-2.png',
   '/images/competitor-3.png',
-  '/images/competitor-1.png',
 ];
 
 export default function CompetitiveAnalysisPage() {
@@ -32,12 +31,19 @@ export default function CompetitiveAnalysisPage() {
             <h3 className="section-title">Nothing does X</h3>
             <p className="body-text">{LOREM_LONG}</p>
           </div>
-          <div className="ca-nothing__thumbs">
-            {COMPETITOR_THUMBS.map((src, i) => (
-              <div key={i} className="ca-thumb">
-                <img src={src} alt="" />
-              </div>
-            ))}
+          <div className="ca-nothing__gallery">
+            <div className="ca-nothing__thumbs">
+              {COMPETITOR_THUMBS.map((src, i) => (
+                <div key={i} className="ca-thumb">
+                  <img src={src} alt="" />
+                </div>
+              ))}
+            </div>
+            <div className="ca-nothing__dots" aria-hidden="true">
+              <span className="is-active" />
+              <span />
+              <span />
+            </div>
           </div>
         </section>
 

@@ -67,29 +67,30 @@
   position: relative;
   z-index: 1;
   width: 100%;
+  height: clamp(100px, 16vw, 220px);
   display: flex;
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  line-height: 0.75;
-  margin-bottom: clamp(-260px, -18vw, -120px);
   pointer-events: none;
+  margin-top: 8px;
 }
 
 .footer__wordmark {
   font-family: var(--font-head);
-  font-weight: 500;
-  font-size: clamp(260px, 36vw, 560px);
+  font-weight: 400;
+  font-size: clamp(280px, 38vw, 580px);
   line-height: 0.85;
   letter-spacing: -0.01em;
   color: transparent;
   background-image: url('/images/product-main.png');
-  background-size: 240% 560%;
-  background-position: center 48%;
+  background-size: 240% 260%;
+  background-position: center 35%;
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
-  filter: drop-shadow(0 2px 12px rgba(60, 110, 80, 0.25));
   white-space: nowrap;
+  transform: translateY(-3%);
 }
 
 @supports not (background-clip: text) {

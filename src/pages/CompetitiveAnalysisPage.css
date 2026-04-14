@@ -53,14 +53,20 @@
   gap: 24px;
 }
 
+.ca-nothing__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .ca-nothing__thumbs {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
 .ca-thumb {
-  aspect-ratio: 304/340;
+  aspect-ratio: 1/1;
   border-radius: 16px;
   overflow: hidden;
   background: var(--white);
@@ -72,6 +78,31 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.ca-nothing__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--chip-bg);
+  border-radius: 99px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.ca-nothing__dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(39, 67, 94, 0.25);
+}
+
+.ca-nothing__dots .is-active {
+  background: var(--ink-soft);
+  width: 24px;
+  border-radius: 4px;
 }
 
 /* Inspired by Y -------------------------------------------- */

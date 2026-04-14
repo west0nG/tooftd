@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-import footerGrass from '../assets/footer-grass.jpg';
-import footerMask from '../assets/footer-mask.svg';
 import './Footer.css';
 
-const navLinks = [
+const discoverLinks = [
   { path: '/', label: 'Home' },
   { path: '/bts', label: 'Team' },
   { path: '/competitive-analysis', label: 'Competitor Analysis' },

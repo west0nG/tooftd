@@ -7,7 +7,12 @@ export default function SoftFuzzyCTA() {
     <section className="cta">
       <div className="cta__frame">
         <div className="cta__inner">
-          <div className="cta__bg" aria-hidden="true" />
+          <img
+            src="/images/product-shag.png"
+            alt=""
+            aria-hidden="true"
+            className="cta__grass"
+          />
           <div className="cta__content">
             <h2 className="cta__title">Soft, fuzzy, and weird.</h2>
             <Link to="/preorder" className="btn btn--ghost cta__btn">

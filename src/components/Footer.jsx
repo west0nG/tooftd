@@ -5,58 +5,47 @@ import './Footer.css';
 
 const navLinks = [
   { path: '/', label: 'Home' },
-  { path: '/team', label: 'Team' },
-  { path: '/competitor-analysis', label: 'Competitor Analysis' },
-  { path: '/business', label: 'Business' },
+  { path: '/bts', label: 'Team' },
+  { path: '/competitive-analysis', label: 'Competitor Analysis' },
+  { path: '/', label: 'Business' },
   { path: '/bts', label: 'BTS' },
 ];
 
-const contactLinks = [
-  { label: 'xxxxxx@usc.edu', href: 'mailto:xxxxxx@usc.edu' },
-  { label: 'Instagram', href: '#' },
-  { label: 'Twitter', href: '#' },
-];
-
-export default function Footer({ variant = 'light' }) {
-  const className = `footer footer--${variant}`;
-
+export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__inner">
-        <div className="footer__grid">
-          <div className="footer__desc">
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut
-              sapien adipiscing augue donec
-            </p>
-          </div>
+      <div className="footer__panel">
+        <div className="footer__inner">
+          <p className="footer__copy">
+            Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut
+            sapien adipiscing augue donec
+          </p>
 
-          <div className="footer__nav">
+          <div className="footer__col">
             <h4 className="footer__heading">Discover more</h4>
-            {navLinks.map(({ path, label }) => (
-              <Link key={path} to={path} className="footer__link">
-                {label}
-              </Link>
-            ))}
+            <ul className="footer__list">
+              {discoverLinks.map((l, i) => (
+                <li key={i}><Link to={l.path}>{l.label}</Link></li>
+              ))}
+            </ul>
           </div>
 
-          <div className="footer__contact">
+          <div className="footer__col">
             <h4 className="footer__heading">Contact</h4>
-            {contactLinks.map(({ label, href }) => (
-              <a key={label} href={href} className="footer__link">
-                {label}
-              </a>
-            ))}
+            <ul className="footer__list">
+              <li><a href="mailto:xxxxxx@usc.edu">xxxxxx@usc.edu</a></li>
+              <li><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a></li>
+              <li><a href="https://twitter.com" target="_blank" rel="noreferrer">Twitter</a></li>
+            </ul>
           </div>
         </div>
 
-        <div className="footer__logo-wrap">
-          <div
-            className="footer__logo-mask"
-            style={{ maskImage: `url(${footerMask})`, WebkitMaskImage: `url(${footerMask})` }}
-          >
-            <img src={footerGrass} alt="Tooftd" className="footer__logo-img" />
-          </div>
+        <div className="footer__watermark" aria-hidden="true">
+          <img
+            src="/images/tooftd-mask.png"
+            alt=""
+            className="footer__wordmark"
+          />
         </div>
       </div>
     </footer>

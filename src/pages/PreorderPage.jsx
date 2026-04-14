@@ -3,144 +3,89 @@ import ArrowRight from '../components/ArrowRight';
 import './PreorderPage.css';
 
 const COLORS = [
-  { id: 'green', label: 'Moss green', hex: '#35DF46' },
-  { id: 'deepblue', label: 'Night blue', hex: '#27435E' },
-  { id: 'cyan', label: 'Lagoon', hex: '#2DE9E9' },
-  { id: 'blue', label: 'Sky', hex: '#59A7F0' },
-  { id: 'purple', label: 'Electric', hex: '#612CF3' },
+  { id: 'green', hex: '#35DF46' },
+  { id: 'cyan', hex: '#2DE9E9' },
+  { id: 'blue', hex: '#59A7F0' },
+  { id: 'purple', hex: '#612CF3' },
 ];
 
 const GALLERY = [
-  { src: '/images/product-main.png', alt: 'Tooftd lounge view' },
-  { src: '/images/product-gradient.png', alt: 'Tooftd top-down' },
-  { src: '/images/product-shag.png', alt: 'Tooftd shaggy texture' },
+  { id: 'main', src: '/images/product-main.png' },
+  { id: 'gradient', src: '/images/product-gradient.png' },
+  { id: 'shag', src: '/images/product-shag.png' },
 ];
 
+const LOREM = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor.';
+
 const SPECS = [
-  'Dimensions: 16 × 17 × 6 ft',
-  'Material: Wool blend + recycled foam core',
-  'Clean with a water vacuum — no harsh detergents',
-  'Not wheelchair friendly — transfer required to enter',
+  'Dimensions: 16 x 17 x 6 ft',
+  'Material: Lorem Ipsum',
+  'use a water vaccum for cleaning',
+  'Not wheel chair friendly',
 ];
 
 export default function PreorderPage() {
-  const [active, setActive] = useState(0);
+  const [activeThumb, setActiveThumb] = useState('main');
   const [color, setColor] = useState('blue');
-  const [qty, setQty] = useState(1);
-  const [toast, setToast] = useState(null);
 
-  const handleCheckout = (e) => {
-    e.preventDefault();
-    const picked = COLORS.find(c => c.id === color);
-    setToast(`Reserved ${qty} × Tooftd in ${picked.label}`);
-    setTimeout(() => setToast(null), 2400);
-  };
+  const mainImage = GALLERY.find(g => g.id === activeThumb).src;
 
   return (
-    <div className="po page">
+    <div className="po">
       <div className="po__inner">
         <div className="po-grid">
-          <section className="po-gallery" aria-label="Product gallery">
+          <div className="po-gallery">
             <div className="po-gallery__main">
-              <img
-                src={GALLERY[active].src}
-                alt={GALLERY[active].alt}
-                key={active}
-              />
-              <div
-                className="po-gallery__tint"
-                style={{ background: COLORS.find(c => c.id === color).hex }}
-                aria-hidden="true"
-              />
+              <img src={mainImage} alt="" key={mainImage} />
             </div>
             <div className="po-gallery__thumbs">
-              {GALLERY.map((g, i) => (
+              {GALLERY.map((g) => (
                 <button
-                  key={g.src}
+                  key={g.id}
                   type="button"
-                  onClick={() => setActive(i)}
-                  className={`po-gallery__thumb${i === active ? ' is-active' : ''}`}
-                  aria-label={`View ${g.alt}`}
+                  className={`po-thumb${g.id === activeThumb ? ' is-active' : ''}${g.id === 'shag' ? ' po-thumb--wide' : ''}`}
+                  onClick={() => setActiveThumb(g.id)}
+                  aria-label={`View ${g.id}`}
                 >
                   <img src={g.src} alt="" />
                 </button>
               ))}
             </div>
-          </section>
+          </div>
 
-          <section className="po-info">
-            <header className="po-info__head">
+          <div className="po-info">
+            <div className="po-info__head">
               <h1 className="section-title po-info__title">Preorder a Tooftd</h1>
-              <p className="body-text">
-                Made-to-order. Shipping begins late summer 2026. A $60 deposit
-                holds your slot; the balance ($420) is charged before
-                fabrication.
-              </p>
+              <p className="body-text">{LOREM}</p>
               <ul className="po-info__specs">
                 {SPECS.map((s) => <li key={s}>{s}</li>)}
               </ul>
-            </header>
+            </div>
 
-            <form className="po-form" onSubmit={handleCheckout}>
-              <div className="po-form__field">
-                <h3 className="po-form__label">Select Color</h3>
-                <div className="po-colors" role="radiogroup" aria-label="Tooftd color">
-                  {COLORS.map((c) => (
-                    <button
-                      type="button"
-                      key={c.id}
-                      role="radio"
-                      aria-checked={color === c.id}
-                      aria-label={c.label}
-                      className={`po-color${color === c.id ? ' is-active' : ''}`}
-                      style={{ '--chip': c.hex }}
-                      onClick={() => setColor(c.id)}
-                    >
-                      <span />
-                    </button>
-                  ))}
-                </div>
-                <p className="po-form__hint">
-                  {COLORS.find(c => c.id === color).label}
-                </p>
-              </div>
-
-              <div className="po-form__field">
-                <h3 className="po-form__label">Quantity</h3>
-                <div className="po-qty">
+            <div className="po-colors-block">
+              <h3 className="po-colors-block__label">Select Color</h3>
+              <div className="po-colors" role="radiogroup" aria-label="Tooftd color">
+                {COLORS.map((c) => (
                   <button
                     type="button"
-                    onClick={() => setQty(Math.max(1, qty - 1))}
-                    aria-label="Decrease quantity"
-                  >−</button>
-                  <span>{qty}</span>
-                  <button
-                    type="button"
-                    onClick={() => setQty(Math.min(5, qty + 1))}
-                    aria-label="Increase quantity"
-                  >+</button>
-                </div>
-                <p className="po-form__hint">Limit 5 per household</p>
+                    key={c.id}
+                    role="radio"
+                    aria-checked={color === c.id}
+                    aria-label={c.id}
+                    className={`po-color${color === c.id ? ' is-active' : ''}`}
+                    style={{ '--chip': c.hex }}
+                    onClick={() => setColor(c.id)}
+                  />
+                ))}
               </div>
+            </div>
 
-              <div className="po-summary">
-                <span>Subtotal</span>
-                <strong>${(60 * qty).toLocaleString()}</strong>
-              </div>
-
-              <button type="submit" className="btn po-checkout">
-                <span>Checkout</span>
-                <ArrowRight className="btn__arrow" />
-              </button>
-            </form>
-          </section>
-        </div>
-
-        {toast && (
-          <div className="po-toast" role="status">
-            {toast}
+            <button type="button" className="btn po-checkout">
+              <span>Checkout</span>
+              <ArrowRight className="btn__arrow" />
+            </button>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

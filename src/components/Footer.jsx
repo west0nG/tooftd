@@ -38,12 +38,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="footer__watermark" aria-hidden="true">
-          <img
-            src="/images/tooftd-mask.png"
-            alt=""
-            className="footer__wordmark"
-          />
+        <div className="footer__wordmark" aria-hidden="true">
+          <img src="/images/figma/footer-wordmark.png" alt="" />
         </div>
       </div>
     </footer>

@@ -1,15 +1,17 @@
-import SoftFuzzyCTA from '../components/SoftFuzzyCTA';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from '../components/icons';
 import './BTSPage.css';
 
 const LOREM_SHORT = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque.';
+const LOREM_LEDE = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor.';
 
 function TeamCard() {
   return (
-    <article className="bts-card">
-      <div className="bts-card__photo" aria-hidden="true" />
-      <div className="bts-card__body">
-        <h4 className="bts-card__name">Name</h4>
-        <p className="bts-card__bio">{LOREM_SHORT}</p>
+    <article className="team-card">
+      <div className="team-card__photo" aria-hidden="true" />
+      <div className="team-card__body">
+        <h4 className="team-card__name">Name</h4>
+        <p className="body-md">{LOREM_SHORT}</p>
       </div>
     </article>
   );
@@ -17,30 +19,50 @@ function TeamCard() {
 
 export default function BTSPage() {
   return (
-    <div className="bts">
-      <div className="bts__inner">
-        <section className="bts-section">
-          <div className="bts-section__badge">
-            <img src="/images/product-gradient.png" alt="" aria-hidden="true" />
-          </div>
-          <h2 className="section-title bts-section__title">Product team</h2>
-          <div className="bts-grid">
+    <div className="page bts-page">
+      <section className="section page-hero">
+        <div className="page-hero__inner">
+          <p className="eyebrow">Behind the scenes</p>
+          <h1 className="page-hero__title h-display">The team behind Tooftd</h1>
+          <p className="body-lg page-hero__lede">{LOREM_LEDE}</p>
+        </div>
+      </section>
+
+      <section className="section section--mute">
+        <div className="team">
+          <header className="team__head">
+            <h2 className="h-display">Product team</h2>
+            <p className="body-md team__lede">{LOREM_SHORT}</p>
+          </header>
+          <div className="team__grid">
             {Array.from({ length: 4 }).map((_, i) => <TeamCard key={i} />)}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="bts-section">
-          <div className="bts-section__badge bts-section__badge--logo">
-            <img src="/images/logo-ft.png" alt="" aria-hidden="true" />
-          </div>
-          <h2 className="section-title bts-section__title">Web Team</h2>
-          <div className="bts-grid">
+      <section className="section">
+        <div className="team">
+          <header className="team__head">
+            <h2 className="h-display">Web team</h2>
+            <p className="body-md team__lede">{LOREM_SHORT}</p>
+          </header>
+          <div className="team__grid">
             {Array.from({ length: 4 }).map((_, i) => <TeamCard key={i} />)}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <SoftFuzzyCTA />
-      </div>
+      <section className="section section--cta">
+        <div className="cta-band">
+          <h2 className="h-display cta-band__title">
+            Ready to join the conversation?
+          </h2>
+          <Link to="/preorder" className="btn btn--light">
+            <span>Preorder</span>
+            <span className="btn__icon"><ArrowRight /></span>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

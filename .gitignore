@@ -5,3 +5,8 @@ dist/
 .DS_Store
 **/.DS_Store
 tmp-screenshots/
+.claude/settings.local.json
+.env
+.env.local
+.mcp.json
+.vercel

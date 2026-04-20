@@ -1,47 +1,35 @@
 :root {
-  --bg: #FAFAFA;
-  --white: #FFFFFF;
+  /* Palette --------------------------------------------------- */
   --ink: #000000;
   --ink-soft: #181818;
-  --ink-mute: #3D4E54;
-  --stone: #6A6A6A;
+  --ink-mute: #737373;
+  --bg: #FFFFFF;
+  --bg-mute: #FAFAFA;
+  --bg-sky: #DFEEFF;
+  --border: rgba(0, 0, 0, 0.1);
+  --overlay-top: rgba(11, 26, 33, 0.2);
+  --overlay-bot: rgba(11, 26, 33, 0.3);
 
-  --nav-bg: #F0F2F6;
-  --chip-bg: #EBF0F4;
-
-  --blue-50: #DFEEFF;
-  --blue-100: #DAE8FF;
-  --blue-200: #A1C9EE;
-  --blue-300: #84C2FA;
-  --blue-400: #59A7F0;
-  --blue-500: #7295D1;
-  --blue-logo: #A9BAD6;
-
-  --accent-green: #35DF46;
-  --accent-deepblue: #27435E;
-  --accent-cyan: #2DE9E9;
-  --accent-blue: #59A7F0;
-  --accent-purple: #612CF3;
-
-  --shadow-btn: 0 2px 15px -2px rgba(0, 0, 0, 0.25);
-  --shadow-card: 0 2px 20px -2px rgba(9, 31, 53, 0.12);
-  --shadow-soft: 0 0.93px 6.94px rgba(0, 0, 0, 0.10);
-  --shadow-footer: 0 -2px 20px -2px rgba(106, 150, 175, 0.20);
-
-  --radius-pill: 16px;
-  --radius-card: 16px;
-  --radius-cta-inner: 24px;
-  --radius-cta-outer: 32px;
+  /* Radii ----------------------------------------------------- */
+  --radius: 4px;
   --radius-footer: 80px;
 
-  --font-head: 'Baloo Tammudu 2', 'Baloo Tammudu', sans-serif;
-  --font-body: 'Inria Sans', system-ui, sans-serif;
-  --font-mark: 'Instrument Sans', sans-serif;
+  /* Shadows --------------------------------------------------- */
+  --shadow-card: 0 37px 32px 0 rgba(0, 0, 0, 0.1);
+
+  /* Fonts ----------------------------------------------------- */
+  --font-ui: 'Nunito', -apple-system, BlinkMacSystemFont, 'SF Pro Rounded', 'Helvetica Neue', sans-serif;
+  --font-footer: 'Inria Sans', Georgia, serif;
+
+  /* Layout ---------------------------------------------------- */
+  --page-pad: clamp(24px, 8.47vw, 128px);
+  --nav-pad-y: clamp(20px, 3.17vw, 48px);
+  --section-gap: clamp(64px, 8.47vw, 128px);
+  --container: 1256px;
+  --footer-container: 1200px;
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -52,20 +40,21 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 16px;
   line-height: 1.5;
-  color: var(--ink-soft);
+  color: var(--ink);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: var(--font-head);
-  font-weight: 400;
+  font-family: var(--font-ui);
+  font-weight: 700;
   line-height: 1.15;
   color: var(--ink);
+  letter-spacing: -0.01em;
 }
 
 img {
@@ -86,103 +75,117 @@ button {
   color: inherit;
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+/* Typography scale ------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  text-transform: uppercase;
 }
 
-.container--wide {
-  max-width: 1344px;
+.h-display {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: -0.01em;
 }
 
+.body-lg {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.body-md {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-mute);
+}
+
+/* Buttons ---------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
   padding: 16px 24px;
-  background: var(--blue-50);
-  color: var(--ink-soft);
-  font-family: var(--font-body);
-  font-weight: 700;
+  background: var(--ink);
+  color: #FFFFFF;
+  font-family: var(--font-ui);
+  font-weight: 500;
   font-size: 16px;
-  line-height: 1.2;
-  border: 1px solid var(--blue-200);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-btn);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
   cursor: pointer;
   white-space: nowrap;
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 22px -4px rgba(0, 0, 0, 0.22);
-  background: #EAF3FF;
+  background: #1c1c1c;
+  box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.4);
 }
 
 .btn:active {
   transform: translateY(0);
-  box-shadow: 0 1px 6px -2px rgba(0, 0, 0, 0.25);
+  box-shadow: none;
 }
 
-.btn--ghost {
-  background: var(--white);
+.btn--light {
+  background: #FFFFFF;
+  color: var(--ink);
 }
 
-.btn__arrow {
-  width: 18px;
-  height: 18px;
+.btn--light:hover {
+  background: #F4F4F4;
+}
+
+.btn__icon {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
   transition: transform 0.2s ease;
 }
 
-.btn:hover .btn__arrow {
-  transform: translateX(3px);
+.btn:hover .btn__icon {
+  transform: translateX(2px);
 }
 
-.eyebrow {
-  font-family: var(--font-mark);
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  color: var(--blue-logo);
-  text-transform: none;
+.btn__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.section-title {
-  font-family: var(--font-head);
-  font-size: 32px;
-  font-weight: 400;
-  color: var(--ink);
-  line-height: 1.2;
+.btn--light .btn__icon svg path {
+  stroke: var(--ink);
 }
 
-.section-title--lg {
-  font-size: 60px;
-  line-height: 1.1;
+.btn:not(.btn--light) .btn__icon svg path {
+  stroke: #FFFFFF;
 }
 
-.body-text {
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--ink);
+/* Layout primitives ----------------------------------------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--page-pad) * 2);
+  margin: 0 auto;
+  padding: 0 var(--page-pad);
 }
 
-.page {
-  padding-top: 80px;
+.section {
+  padding: var(--section-gap) var(--page-pad);
 }
 
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 26px;
-  }
-  .section-title--lg {
-    font-size: 40px;
-  }
-  .btn {
-    padding: 14px 20px;
-    font-size: 15px;
-  }
+.section--mute {
+  background: var(--bg-mute);
 }

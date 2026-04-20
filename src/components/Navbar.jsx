@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import ArrowRight from './ArrowRight';
+import { ArrowRight } from './icons';
 import './Navbar.css';
 
 const navLinks = [
@@ -12,15 +12,27 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     setMenuOpen(false);
     if (!location.hash) window.scrollTo(0, 0);
   }, [location]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const onHero = isHome && !scrolled;
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${onHero ? 'navbar--hero' : 'navbar--solid'}`}>
       <div className="navbar__inner">
         <Link className="navbar__logo" to="/" aria-label="Tooftd home">
           Tooftd
@@ -36,24 +48,25 @@ export default function Navbar() {
         </button>
 
         <div className={`navbar__cluster ${menuOpen ? 'is-open' : ''}`}>
-          <div className="navbar__pill">
+          <ul className="navbar__links">
             {navLinks.map(({ path, label }, i) => (
-              <NavLink
-                key={i}
-                to={path}
-                className={({ isActive }) =>
-                  `navbar__link${isActive && !path.includes('#') ? ' navbar__link--active' : ''}`
-                }
-                end
-              >
-                {label}
-              </NavLink>
+              <li key={i}>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) =>
+                    `navbar__link${isActive && !path.includes('#') ? ' navbar__link--active' : ''}`
+                  }
+                  end
+                >
+                  {label}
+                </NavLink>
+              </li>
             ))}
-          </div>
+          </ul>
 
-          <Link to="/preorder" className="btn navbar__cta">
+          <Link to="/preorder" className="btn btn--light navbar__cta">
             <span>Preorder</span>
-            <ArrowRight className="btn__arrow" />
+            <span className="btn__icon"><ArrowRight /></span>
           </Link>
         </div>
       </div>

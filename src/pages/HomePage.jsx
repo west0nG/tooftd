@@ -1,67 +1,113 @@
 import { Link } from 'react-router-dom';
-import ArrowRight from '../components/ArrowRight';
-import SoftFuzzyCTA from '../components/SoftFuzzyCTA';
+import { ArrowRight, CircleArrowDown, Rotate3D } from '../components/icons';
 import './HomePage.css';
 
-const LOREM = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor.';
+const LOREM_HERO = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing.';
+const LOREM_LONG = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor. Lorem ipsum dolor sit amet consectetur.';
+const LOREM_SHORT = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor. Lorem ipsum dolor sit.';
+const LOREM_MED = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque.';
 
 export default function HomePage() {
   return (
     <div className="home">
-      <section className="home-hero">
-        <div className="home-hero__stage">
+      {/* Hero ----------------------------------------------------- */}
+      <section className="hero">
+        <div className="hero__media">
           <img
-            src="/images/product-gradient.png"
+            className="hero__bg"
+            src="/images/figma/hero-bg-7a7563.png"
             alt=""
             aria-hidden="true"
-            className="home-hero__platform"
           />
-          <div className="home-hero__content">
-            <img
-              src="/images/logo-ft.png"
-              alt="Tooftd"
-              className="home-hero__logo"
-            />
+          <img
+            className="hero__letters"
+            src="/images/figma/hero-letters-5d9aa3.png"
+            alt="Tooftd lettering in fuzzy turf"
+          />
+          <div className="hero__overlay hero__overlay--top" />
+          <div className="hero__overlay hero__overlay--bot" />
+        </div>
+        <div className="hero__foot">
+          <p className="hero__lede">{LOREM_HERO}</p>
+          <a
+            href="#conversation"
+            className="hero__scroll"
+            aria-label="Scroll to content"
+          >
+            <CircleArrowDown size={96} />
+          </a>
+        </div>
+      </section>
+
+      {/* Section — A new place for conversation ------------------ */}
+      <section id="conversation" className="section section--conv">
+        <div className="conv">
+          <div className="conv__copy">
+            <h2 className="h-display">
+              A new place for<br />conversation
+            </h2>
+            <p className="body-md">{LOREM_LONG}</p>
             <Link to="/preorder" className="btn">
               <span>Preorder</span>
-              <ArrowRight className="btn__arrow" />
+              <span className="btn__icon"><ArrowRight /></span>
             </Link>
+          </div>
+
+          <figure className="conv__media">
+            <img
+              src="/images/figma/grass-mat-249300.png"
+              alt="Tooftd grass mat"
+              className="conv__mat"
+            />
+            <span className="conv__rotate" aria-hidden="true">
+              <Rotate3D size={48} />
+            </span>
+          </figure>
+        </div>
+      </section>
+
+      {/* Section — Features -------------------------------------- */}
+      <section className="section section--mute section--features">
+        <div className="features">
+          <header className="features__head">
+            <h2 className="h-display">Features</h2>
+            <p className="body-md features__lede">{LOREM_MED}</p>
+          </header>
+
+          <div className="features__grid">
+            {[0, 1, 2].map((i) => (
+              <article key={i} className="feature-card">
+                <div className="feature-card__media">
+                  <img src="/images/figma/feature-card.png" alt="Open seating" />
+                </div>
+                <div className="feature-card__body">
+                  <h3 className="feature-card__title">Open Seating</h3>
+                  <p className="body-md">{LOREM_SHORT}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="home-block">
-        <div className="home-block__square">
-          <img src="/images/product-main.png" alt="" />
-        </div>
-        <div className="home-block__copy">
-          <h2 className="section-title">Tooftd is a place for conversation</h2>
-          <p className="body-text">{LOREM}</p>
-          <Link to="/preorder" className="btn">
-            <span>Preorder</span>
-            <ArrowRight className="btn__arrow" />
-          </Link>
-        </div>
-        <div className="home-block__strip">
-          <img src="/images/product-shag.png" alt="" />
-        </div>
-      </section>
-
-      <section className="home-split">
-        <div className="home-split__copy">
-          <h2 className="section-title">Don&rsquo;t stare at the screen</h2>
-          <p className="body-text">{LOREM}</p>
-          <Link to="/bts" className="btn">
-            <span>Behind the scenes</span>
-            <ArrowRight className="btn__arrow" />
-          </Link>
-        </div>
-        <div className="home-split__photo">
-          <img src="/images/img-0336.png" alt="" />
+      {/* Section — Developed with care --------------------------- */}
+      <section className="section section--care">
+        <div className="care">
+          <figure className="care__media">
+            <img src="/images/figma/grass-close-4c1299.png" alt="Grass texture detail" />
+          </figure>
+          <div className="care__copy">
+            <h2 className="h-display">
+              Developed with care<br />&amp; thoughtfulness
+            </h2>
+            <p className="body-md">{LOREM_LONG}</p>
+            <Link to="/preorder" className="btn care__btn">
+              <span>Preorder</span>
+              <span className="btn__icon"><ArrowRight /></span>
+            </Link>
+          </div>
         </div>
       </section>
-
-      <SoftFuzzyCTA />
     </div>
   );
 }

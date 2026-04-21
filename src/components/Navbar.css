@@ -103,7 +103,16 @@
   flex-direction: column;
   gap: 4px;
   padding: 8px;
-  z-index: 2;
+  position: relative;
+  z-index: 60;
+}
+
+.navbar--menu-open .navbar__hamburger span {
+  background: var(--ink);
+}
+
+.navbar__backdrop {
+  display: none;
 }
 
 .navbar__hamburger span {
@@ -133,6 +142,20 @@
   .navbar__hamburger {
     display: flex;
   }
+  .navbar__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 40;
+  }
+  .navbar__backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
   .navbar__cluster {
     position: fixed;
     top: 0;
@@ -147,6 +170,7 @@
     transform: translateX(100%);
     transition: transform 0.3s ease;
     box-shadow: -10px 0 40px -10px rgba(0, 0, 0, 0.25);
+    z-index: 50;
   }
   .navbar__cluster.is-open {
     transform: translateX(0);

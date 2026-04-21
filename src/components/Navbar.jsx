@@ -27,10 +27,19 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const { body } = document;
+    if (menuOpen) {
+      const prev = body.style.overflow;
+      body.style.overflow = 'hidden';
+      return () => { body.style.overflow = prev; };
+    }
+  }, [menuOpen]);
+
   const onHero = isHome && !scrolled;
 
   return (
-    <nav className={`navbar ${onHero ? 'navbar--hero' : 'navbar--solid'}`}>
+    <nav className={`navbar ${onHero ? 'navbar--hero' : 'navbar--solid'} ${menuOpen ? 'navbar--menu-open' : ''}`}>
       <div className="navbar__inner">
         <Link className="navbar__logo" to="/" aria-label="Tooftd home">
           Tooftd
@@ -39,11 +48,17 @@ export default function Navbar() {
         <button
           className={`navbar__hamburger ${menuOpen ? 'is-open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
         >
           <span /><span /><span />
         </button>
+
+        <div
+          className={`navbar__backdrop ${menuOpen ? 'is-open' : ''}`}
+          onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
+        />
 
         <div className={`navbar__cluster ${menuOpen ? 'is-open' : ''}`}>
           <ul className="navbar__links">

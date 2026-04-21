@@ -3,8 +3,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import BTSPage from './pages/BTSPage';
-import CompetitiveAnalysisPage from './pages/CompetitiveAnalysisPage';
+import TeamPage from './pages/TeamPage';
+import BusinessPage from './pages/BusinessPage';
 import PreorderPage from './pages/PreorderPage';
 
 function Layout() {
@@ -14,8 +14,8 @@ function Layout() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/bts" element={<BTSPage />} />
-          <Route path="/competitive-analysis" element={<CompetitiveAnalysisPage />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/business" element={<BusinessPage />} />
           <Route path="/preorder" element={<PreorderPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>

@@ -4,10 +4,8 @@ import { ArrowRight } from './icons';
 import './Navbar.css';
 
 const navLinks = [
-  { path: '/bts', label: 'Team' },
-  { path: '/competitive-analysis', label: 'Competitive analysis' },
-  { path: '/#business', label: 'Business' },
-  { path: '/bts', label: 'BTS' },
+  { path: '/team', label: 'Team' },
+  { path: '/business', label: 'Business' },
 ];
 
 export default function Navbar() {

@@ -3,10 +3,9 @@ import './Footer.css';
 
 const discoverLinks = [
   { path: '/', label: 'Home' },
-  { path: '/bts', label: 'Team' },
-  { path: '/competitive-analysis', label: 'Competitor Analysis' },
-  { path: '/', label: 'Business' },
-  { path: '/bts', label: 'BTS' },
+  { path: '/team', label: 'Team' },
+  { path: '/business', label: 'Business' },
+  { path: '/preorder', label: 'Preorder' },
 ];
 
 export default function Footer() {

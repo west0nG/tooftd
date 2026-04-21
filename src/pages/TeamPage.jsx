@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from '../components/icons';
-import './BTSPage.css';
+import './TeamPage.css';
 
 const LOREM_SHORT = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque.';
 const LOREM_LEDE = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor.';
@@ -17,12 +17,12 @@ function TeamCard() {
   );
 }
 
-export default function BTSPage() {
+export default function TeamPage() {
   return (
-    <div className="page bts-page">
+    <div className="page team-page">
       <section className="section page-hero">
         <div className="page-hero__inner">
-          <p className="eyebrow">Behind the scenes</p>
+          <p className="eyebrow">Team</p>
           <h1 className="page-hero__title h-display">The team behind Tooftd</h1>
           <p className="body-lg page-hero__lede">{LOREM_LEDE}</p>
         </div>

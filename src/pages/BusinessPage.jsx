@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from '../components/icons';
-import './CompetitiveAnalysisPage.css';
+import './BusinessPage.css';
 
 const LOREM_LONG = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor.';
 const LOREM_SHORT = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque.';
@@ -11,13 +11,13 @@ const COMPETITOR_THUMBS = [
   { src: '/images/competitor-3.png', name: 'Competitor C' },
 ];
 
-export default function CompetitiveAnalysisPage() {
+export default function BusinessPage() {
   return (
-    <div className="page ca-page">
+    <div className="page business-page">
       <section className="section page-hero">
         <div className="page-hero__inner">
-          <p className="eyebrow">Research</p>
-          <h1 className="page-hero__title h-display">Competitive analysis</h1>
+          <p className="eyebrow">Business</p>
+          <h1 className="page-hero__title h-display">The business case</h1>
           <p className="body-lg page-hero__lede">{LOREM_LONG}</p>
         </div>
       </section>

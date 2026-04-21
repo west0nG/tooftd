@@ -145,6 +145,14 @@
   display: block;
 }
 
+.conv__model {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+  --poster-color: transparent;
+}
+
 .conv__rotate {
   position: absolute;
   right: 24px;

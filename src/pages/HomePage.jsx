@@ -54,10 +54,21 @@ export default function HomePage() {
           </div>
 
           <figure className="conv__media">
-            <img
-              src="/images/figma/grass-mat-249300.png"
-              alt="Tooftd grass mat"
-              className="conv__mat"
+            <model-viewer
+              class="conv__model"
+              src="/models/mossy-hills.glb"
+              alt="Tooftd modular grass mat 3D render"
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="800"
+              rotation-per-second="14deg"
+              interaction-prompt="none"
+              shadow-intensity="1.1"
+              shadow-softness="0.9"
+              exposure="1.05"
+              environment-image="neutral"
+              camera-orbit="30deg 72deg 105%"
+              field-of-view="28deg"
             />
             <span className="conv__rotate" aria-hidden="true">
               <Rotate3D size={48} />

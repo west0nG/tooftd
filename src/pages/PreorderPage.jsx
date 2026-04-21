@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight } from '../components/icons';
+import Toast from '../components/Toast';
 import './PreorderPage.css';
 
 const COLORS = [
@@ -27,6 +28,7 @@ const SPECS = [
 export default function PreorderPage() {
   const [activeThumb, setActiveThumb] = useState('main');
   const [color, setColor] = useState('blue');
+  const [toastOpen, setToastOpen] = useState(false);
 
   const mainImage = GALLERY.find(g => g.id === activeThumb).src;
   const activeColor = COLORS.find(c => c.id === color);
@@ -89,13 +91,22 @@ export default function PreorderPage() {
               </div>
             </div>
 
-            <button type="button" className="btn po-checkout">
+            <button
+              type="button"
+              className="btn po-checkout"
+              onClick={() => setToastOpen(true)}
+            >
               <span>Checkout</span>
               <span className="btn__icon"><ArrowRight /></span>
             </button>
           </div>
         </div>
       </section>
+      <Toast
+        open={toastOpen}
+        message="You've joined the waitlist — we'll email you when Tooftd ships."
+        onClose={() => setToastOpen(false)}
+      />
     </div>
   );
 }

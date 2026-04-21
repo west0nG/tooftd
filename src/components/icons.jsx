@@ -42,6 +42,28 @@ export function CircleArrowDown({ size = 96, className = '' }) {
   );
 }
 
+export function Check({ size = 16, className = '' }) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3 8.5L6.5 12L13 4.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function Rotate3D({ size = 48, className = '' }) {
   return (
     <svg

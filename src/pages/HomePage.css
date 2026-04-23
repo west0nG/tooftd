@@ -129,7 +129,8 @@
 .conv__media {
   position: relative;
   aspect-ratio: 641 / 470;
-  background: var(--bg-mute);
+  background:
+    radial-gradient(60% 55% at 50% 68%, #E6EFFA 0%, #F2F6FB 55%, var(--bg-mute) 100%);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;

@@ -2,12 +2,15 @@
   padding-top: 0;
 }
 
+.team-page {
+  background:
+    linear-gradient(180deg, #DFEEFF 0%, rgba(223, 238, 255, 0) 900px),
+    var(--bg);
+}
+
 .page-hero {
   padding-top: calc(var(--section-gap) + 80px);
   padding-bottom: var(--section-gap);
-  background:
-    linear-gradient(180deg, #DFEEFF 0%, rgba(223, 238, 255, 0) 70%),
-    var(--bg);
 }
 
 .page-hero__inner {

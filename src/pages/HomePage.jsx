@@ -95,7 +95,7 @@ export default function HomePage() {
               shadow-softness="0.9"
               exposure="1.05"
               environment-image="neutral"
-              camera-orbit="30deg 72deg 105%"
+              camera-orbit="30deg 72deg 88%"
               field-of-view="28deg"
             />
             <span className="conv__rotate" aria-hidden="true">

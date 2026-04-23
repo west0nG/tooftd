@@ -2,10 +2,38 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CircleArrowDown, Rotate3D } from '../components/icons';
 import './HomePage.css';
 
-const LOREM_HERO = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing.';
-const LOREM_LONG = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor. Lorem ipsum dolor sit amet consectetur.';
-const LOREM_SHORT = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor. Lorem ipsum dolor sit.';
-const LOREM_MED = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque.';
+const HERO_LEDE =
+  'An indoor lawn, shaped for the way friends naturally sprawl, lean, and linger.';
+
+const CONVERSATION_COPY =
+  "Think of the last time a group of you ended up on a lawn — shoes off, shoulders touching, nobody in a hurry to stand up. Tooftd is that, made permanent. A soft, tufted landscape of gentle hills and slopes that invites people to lie down, face each other, and talk the way we used to talk outside.";
+
+const FEATURES_LEDE =
+  'Every inch of Tooftd is modeled on the things a real lawn does well — the give of the turf, the slope of a hill, the way a group naturally spreads out across it.';
+
+const CARE_COPY =
+  "We studied real lawns for two years — the density of spring grass, the give underfoot, the way a gentle slope invites you to lie across it instead of sit up straight. The result is a piece of furniture that feels like the outdoors remembered, built carefully enough to live with you for a long time.";
+
+const FEATURES = [
+  {
+    title: 'The Sprawl',
+    body:
+      "No cushions to arrange, no seats to claim. Tooftd's contoured hills let everyone find their own patch of ground — just like they would on a real lawn.",
+    image: '/images/glb-feature-1.png',
+  },
+  {
+    title: 'Tuft by Tuft',
+    body:
+      'Every square foot is hand-tufted to feel like the first warm patch of grass of the spring — soft enough to nap on, dense enough to hold a dozen people.',
+    image: '/images/glb-feature-2.png',
+  },
+  {
+    title: 'Shape the Meadow',
+    body:
+      'Rearrange the hills into a long picnic strip, a quiet corner, or a single round clearing. Tooftd reshapes the way your living room gathers.',
+    image: '/images/glb-feature-3.png',
+  },
+];
 
 export default function HomePage() {
   return (
@@ -28,7 +56,7 @@ export default function HomePage() {
           <div className="hero__overlay hero__overlay--bot" />
         </div>
         <div className="hero__foot">
-          <p className="hero__lede">{LOREM_HERO}</p>
+          <p className="hero__lede">{HERO_LEDE}</p>
           <a
             href="#conversation"
             className="hero__scroll"
@@ -46,7 +74,7 @@ export default function HomePage() {
             <h2 className="h-display">
               A new place for<br />conversation
             </h2>
-            <p className="body-md">{LOREM_LONG}</p>
+            <p className="body-md">{CONVERSATION_COPY}</p>
             <Link to="/preorder" className="btn">
               <span>Preorder</span>
               <span className="btn__icon"><ArrowRight /></span>
@@ -82,18 +110,18 @@ export default function HomePage() {
         <div className="features">
           <header className="features__head">
             <h2 className="h-display">Features</h2>
-            <p className="body-md features__lede">{LOREM_MED}</p>
+            <p className="body-md features__lede">{FEATURES_LEDE}</p>
           </header>
 
           <div className="features__grid">
-            {[0, 1, 2].map((i) => (
-              <article key={i} className="feature-card">
+            {FEATURES.map((feature) => (
+              <article key={feature.title} className="feature-card">
                 <div className="feature-card__media">
-                  <img src="/images/figma/feature-card.png" alt="Open seating" />
+                  <img src={feature.image} alt={feature.title} />
                 </div>
                 <div className="feature-card__body">
-                  <h3 className="feature-card__title">Open Seating</h3>
-                  <p className="body-md">{LOREM_SHORT}</p>
+                  <h3 className="feature-card__title">{feature.title}</h3>
+                  <p className="body-md">{feature.body}</p>
                 </div>
               </article>
             ))}
@@ -111,7 +139,7 @@ export default function HomePage() {
             <h2 className="h-display">
               Developed with care<br />&amp; thoughtfulness
             </h2>
-            <p className="body-md">{LOREM_LONG}</p>
+            <p className="body-md">{CARE_COPY}</p>
             <Link to="/preorder" className="btn care__btn">
               <span>Preorder</span>
               <span className="btn__icon"><ArrowRight /></span>

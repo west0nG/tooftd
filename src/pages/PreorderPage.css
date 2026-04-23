@@ -25,6 +25,7 @@
 }
 
 .po__main {
+  position: relative;
   aspect-ratio: 1 / 1;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -33,49 +34,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
 }
 
-.po__main img {
+.po__model {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  animation: po-fade 0.35s ease;
+  display: block;
+  background: transparent;
+  --poster-color: transparent;
 }
 
-@keyframes po-fade {
-  from { opacity: 0; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1); }
+.po__rotate {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  color: var(--ink);
+  opacity: 0.5;
+  display: inline-flex;
+  pointer-events: none;
 }
 
-.po__thumbs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.po-thumb {
-  aspect-ratio: 1 / 1;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-mute);
-  overflow: hidden;
-  padding: 8px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.po-thumb img {
+.po__rotate svg {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-}
-
-.po-thumb:hover {
-  transform: translateY(-1px);
-}
-
-.po-thumb.is-active {
-  border-color: var(--ink);
 }
 
 /* Info -------------------------------------------------- */

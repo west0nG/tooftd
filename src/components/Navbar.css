@@ -12,10 +12,10 @@
 }
 
 .navbar--solid {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: saturate(1.2) blur(14px);
-  -webkit-backdrop-filter: saturate(1.2) blur(14px);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: saturate(1.4) blur(18px);
+  -webkit-backdrop-filter: saturate(1.4) blur(18px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
 }
 
 .navbar__inner {

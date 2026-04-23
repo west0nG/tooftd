@@ -14,8 +14,8 @@ export default function Footer() {
       <div className="footer__panel">
         <div className="footer__inner">
           <p className="footer__copy">
-            Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut
-            sapien adipiscing augue donec
+            A soft, modular lawn built for the way people actually gather —
+            shoes off, slow afternoons, nobody in a hurry to stand up.
           </p>
 
           <div className="footer__col">
@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="footer__col">
             <h4 className="footer__heading">Contact</h4>
             <ul className="footer__list">
-              <li><a href="mailto:xxxxxx@usc.edu">xxxxxx@usc.edu</a></li>
+              <li><a href="mailto:tooftd@usc.edu">tooftd@usc.edu</a></li>
               <li><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a></li>
               <li><a href="https://twitter.com" target="_blank" rel="noreferrer">Twitter</a></li>
             </ul>

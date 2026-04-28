@@ -10,8 +10,17 @@
   --overlay-top: rgba(11, 26, 33, 0.2);
   --overlay-bot: rgba(11, 26, 33, 0.3);
 
+  /* Earth tones — Tooftd lawn palette ------------------------- */
+  --moss: #4F7A3A;          /* deep spring grass */
+  --moss-soft: #C8DCB2;      /* sun-bleached grass */
+  --terracotta: #C46A4F;    /* picnic blanket clay */
+  --sand: #E8D9B8;          /* dry-grass hay */
+  --dusk: #2A3550;          /* late-evening sky */
+
   /* Radii ----------------------------------------------------- */
-  --radius: 4px;
+  --radius-sm: 4px;          /* spec rows, chips, fine-grained UI */
+  --radius: 16px;            /* default cards, frames, media */
+  --radius-lg: 28px;         /* statement bands, hero blocks */
   --radius-footer: 80px;
 
   /* Shadows --------------------------------------------------- */
@@ -149,6 +158,20 @@ button {
   background: #F4F4F4;
 }
 
+/* Ghost button — outlined, used over hero imagery. */
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #FFFFFF;
+}
+
 .btn__icon {
   width: 16px;
   height: 16px;
@@ -188,4 +211,125 @@ button {
 
 .section--mute {
   background: var(--bg-mute);
+}
+
+/* Texture utilities ----------------------------------------- */
+/* A soft grass texture overlay you can layer on any block.
+   Apply on a positioned parent; the ::before fills it.
+   Use --texture-opacity to dial intensity per surface. */
+.has-grass {
+  position: relative;
+  isolation: isolate;
+}
+
+.has-grass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url('/images/footer-grass.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: var(--texture-opacity, 0.18);
+  filter: saturate(0.85);
+  pointer-events: none;
+}
+
+/* Soft moss tint, used as a warmer alternative to bg-mute. */
+.section--moss {
+  background:
+    linear-gradient(180deg, rgba(200, 220, 178, 0.22), rgba(200, 220, 178, 0.05)),
+    var(--bg);
+}
+
+.section--sand {
+  background:
+    linear-gradient(180deg, rgba(232, 217, 184, 0.30), rgba(232, 217, 184, 0.08)),
+    var(--bg);
+}
+
+/* CTA bands ------------------------------------------------- */
+/* Used at the bottom of Team and Business. Variants give each
+   page its own closing register: lawn (light, picnic invite) for
+   Team, turf (dark + grass texture) for Business. Home doesn't
+   use this — it closes on a content image instead, keeping the
+   site's CTA rhythm varied. */
+.section--cta {
+  padding-bottom: var(--section-gap);
+}
+
+.cta-band {
+  max-width: var(--container);
+  margin: 0 auto;
+  background: var(--ink);
+  color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: clamp(40px, 6vw, 72px) clamp(24px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  overflow: hidden;
+}
+
+.cta-band__title {
+  color: #FFFFFF;
+  max-width: 18ch;
+}
+
+.cta-band__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 520px;
+}
+
+/* Lawn variant — Team page: warm, invitational. */
+.cta-band--lawn {
+  background: var(--moss-soft);
+  color: var(--ink);
+}
+
+.cta-band--lawn .cta-band__title--ink {
+  color: var(--ink);
+}
+
+/* Turf variant — Business page: dark + grass texture peeking
+   through, like turning over a corner of grass. */
+.cta-band--turf {
+  background: var(--dusk);
+  color: #FFFFFF;
+}
+
+.cta-band--turf .cta-band__title { color: #FFFFFF; }
+
+.eyebrow--ondark { color: rgba(255, 255, 255, 0.7); }
+
+@media (max-width: 820px) {
+  .cta-band {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .cta-band__actions { align-items: flex-start; width: 100%; }
+}
+
+/* Phone-tier polish — applied to anything using the global primitives.
+   Goals: pull the page-pad in at 24px (already clamped), drop one tier
+   of the section gap, soften the radii on big surfaces, and keep
+   buttons reachable with thumb-friendly padding. */
+@media (max-width: 520px) {
+  .h-display { font-size: clamp(28px, 7vw, 36px); }
+  .body-lg { font-size: 16px; }
+
+  .section { padding: clamp(56px, 12vw, 96px) var(--page-pad); }
+
+  .cta-band {
+    padding: 32px 24px;
+    border-radius: var(--radius);
+    gap: 20px;
+  }
+  .cta-band__title { font-size: clamp(28px, 7vw, 36px); }
+
+  .btn { padding: 14px 20px; }
 }

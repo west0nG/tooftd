@@ -3,7 +3,7 @@
 }
 
 .po-section {
-  padding-top: calc(var(--section-gap) + 80px);
+  padding-top: clamp(112px, 14vw, 208px);
 }
 
 .po {
@@ -42,23 +42,6 @@
   display: block;
   background: transparent;
   --poster-color: transparent;
-}
-
-.po__rotate {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  width: 48px;
-  height: 48px;
-  color: var(--ink);
-  opacity: 0.5;
-  display: inline-flex;
-  pointer-events: none;
-}
-
-.po__rotate svg {
-  width: 100%;
-  height: 100%;
 }
 
 /* Info -------------------------------------------------- */
@@ -128,12 +111,13 @@
 
 .po-colors {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
 .po-color {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
   background: var(--chip);
   border: 2px solid transparent;
@@ -159,6 +143,17 @@
 }
 
 @media (max-width: 880px) {
-  .po { grid-template-columns: 1fr; gap: 40px; }
+  .po { grid-template-columns: 1fr; gap: 32px; }
   .po__gallery { position: static; }
+  .po__main { aspect-ratio: 4 / 3; }
+}
+
+@media (max-width: 520px) {
+  .po__info { gap: 20px; }
+  .po-checkout {
+    align-self: stretch;
+    padding: 16px 24px;
+  }
+  .po-color { width: 32px; height: 32px; }
+  .po-colors { gap: 12px; }
 }

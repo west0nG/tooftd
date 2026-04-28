@@ -1,7 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Rotate3D } from '../components/icons';
+import { ArrowRight } from '../components/icons';
 import Toast from '../components/Toast';
 import './PreorderPage.css';
+
+function useIsTouch() {
+  const [touch, setTouch] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: none), (max-width: 880px)');
+    const update = () => setTouch(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+  return touch;
+}
 
 function hexToLinearRGBA(hex) {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -12,10 +24,11 @@ function hexToLinearRGBA(hex) {
 }
 
 const COLORS = [
-  { id: 'green', hex: '#35DF46', label: 'Turf green' },
-  { id: 'cyan', hex: '#2DE9E9', label: 'Aqua' },
-  { id: 'blue', hex: '#59A7F0', label: 'Sky' },
-  { id: 'purple', hex: '#612CF3', label: 'Ultraviolet' },
+  { id: 'turf', hex: '#35DF46', label: 'Turf green' },
+  { id: 'moss', hex: '#4F7A3A', label: 'Deep moss' },
+  { id: 'sand', hex: '#E8D9B8', label: 'Hay sand' },
+  { id: 'terracotta', hex: '#C46A4F', label: 'Terracotta' },
+  { id: 'dusk', hex: '#2A3550', label: 'Dusk' },
 ];
 
 const PRODUCT_COPY =
@@ -29,9 +42,10 @@ const SPECS = [
 ];
 
 export default function PreorderPage() {
-  const [color, setColor] = useState('green');
+  const [color, setColor] = useState('turf');
   const [toastOpen, setToastOpen] = useState(false);
   const modelRef = useRef(null);
+  const isTouch = useIsTouch();
 
   const activeColor = COLORS.find(c => c.id === color);
 
@@ -64,7 +78,7 @@ export default function PreorderPage() {
                 class="po__model"
                 src="/models/mossy-hills.glb"
                 alt="Tooftd modular grass mat 3D render"
-                camera-controls
+                {...(!isTouch && { 'camera-controls': true })}
                 auto-rotate
                 auto-rotate-delay="800"
                 rotation-per-second="14deg"
@@ -76,9 +90,6 @@ export default function PreorderPage() {
                 camera-orbit="30deg 72deg 105%"
                 field-of-view="28deg"
               />
-              <span className="po__rotate" aria-hidden="true">
-                <Rotate3D size={48} />
-              </span>
             </div>
           </div>
 

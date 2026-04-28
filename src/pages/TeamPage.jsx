@@ -2,16 +2,31 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from '../components/icons';
 import './TeamPage.css';
 
-const LOREM_SHORT = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque.';
-const LOREM_LEDE = 'Lorem ipsum dolor sit amet consectetur. Elementum nunc lectus ut sapien adipiscing augue donec pellentesque. Convallis ut quisque odio consectetur tortor.';
+const HERO_LEDE =
+  "We're a small group of design and engineering students at USC building Tooftd as our senior project.";
 
-function TeamCard() {
+const PRODUCT_TEAM = [
+  { name: 'Laila LaDuke', photo: '/images/team/laila.jpg', bio: 'Product Designer' },
+  { name: 'Ben Flora', photo: '/images/team/ben.jpg', bio: 'Product Designer' },
+  { name: 'Anika Mantripragada', photo: '/images/team/anika.jpg', bio: 'Product Designer' },
+  { name: 'Clarence Keith', photo: '/images/team/clarence.jpg', bio: 'Product Designer' },
+];
+
+const WEB_TEAM = [
+  { name: 'Sam Cheng', photo: '/images/team/sam.jpg', bio: 'Web Designer' },
+  { name: 'Aaron Lee', photo: '/images/team/aaron.jpg', bio: 'Web Designer' },
+  { name: 'Weston Guo', photo: '/images/team/weston.jpg', bio: 'Web Developer' },
+];
+
+function TeamCard({ name, bio, photo }) {
   return (
     <article className="team-card">
-      <div className="team-card__photo" aria-hidden="true" />
+      <div className="team-card__photo" aria-hidden="true">
+        {photo && <img src={photo} alt="" />}
+      </div>
       <div className="team-card__body">
-        <h4 className="team-card__name">Name</h4>
-        <p className="body-md">{LOREM_SHORT}</p>
+        <h4 className="team-card__name">{name}</h4>
+        <p className="body-md">{bio}</p>
       </div>
     </article>
   );
@@ -24,43 +39,37 @@ export default function TeamPage() {
         <div className="page-hero__inner">
           <p className="eyebrow">Team</p>
           <h1 className="page-hero__title h-display">The team behind Tooftd</h1>
-          <p className="body-lg page-hero__lede">{LOREM_LEDE}</p>
-        </div>
-      </section>
-
-      <section className="section section--mute">
-        <div className="team">
-          <header className="team__head">
-            <h2 className="h-display">Product team</h2>
-            <p className="body-md team__lede">{LOREM_SHORT}</p>
-          </header>
-          <div className="team__grid">
-            {Array.from({ length: 4 }).map((_, i) => <TeamCard key={i} />)}
-          </div>
+          <p className="body-lg page-hero__lede">{HERO_LEDE}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="team">
-          <header className="team__head">
-            <h2 className="h-display">Web team</h2>
-            <p className="body-md team__lede">{LOREM_SHORT}</p>
-          </header>
+          <h2 className="h-display team__title">Product team</h2>
           <div className="team__grid">
-            {Array.from({ length: 4 }).map((_, i) => <TeamCard key={i} />)}
+            {PRODUCT_TEAM.map((m, i) => <TeamCard key={i} {...m} />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--mute">
+        <div className="team">
+          <h2 className="h-display team__title">Web team</h2>
+          <div className="team__grid team__grid--three">
+            {WEB_TEAM.map((m, i) => <TeamCard key={i} {...m} />)}
           </div>
         </div>
       </section>
 
       <section className="section section--cta">
-        <div className="cta-band">
-          <h2 className="h-display cta-band__title">
-            Ready to join the conversation?
+        <div className="cta-band cta-band--lawn">
+          <h2 className="h-display cta-band__title cta-band__title--ink">
+            Say hi.
           </h2>
-          <Link to="/preorder" className="btn btn--light">
-            <span>Preorder</span>
+          <a href="mailto:tooftd@usc.edu" className="btn">
+            <span>Email the team</span>
             <span className="btn__icon"><ArrowRight /></span>
-          </Link>
+          </a>
         </div>
       </section>
     </div>

@@ -67,6 +67,14 @@
   z-index: 1;
 }
 
+.hero__foot-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  max-width: 460px;
+}
+
 .hero__lede {
   font-family: var(--font-ui);
   font-weight: 500;
@@ -75,6 +83,10 @@
   color: #FFFFFF;
   max-width: 360px;
   text-wrap: balance;
+}
+
+.hero__cta {
+  /* Anchor the ghost CTA right under the lede in the hero. */
 }
 
 .hero__scroll {
@@ -154,22 +166,6 @@
   --poster-color: transparent;
 }
 
-.conv__rotate {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  width: 48px;
-  height: 48px;
-  color: var(--ink);
-  opacity: 0.5;
-  display: inline-flex;
-}
-
-.conv__rotate svg {
-  width: 100%;
-  height: 100%;
-}
-
 /* Section — Features ------------------------------------- */
 .features {
   max-width: var(--container);
@@ -191,15 +187,20 @@
 }
 
 .features__lede {
-  max-width: 400px;
-  text-align: right;
-  flex: 0 1 auto;
+  max-width: 480px;
+  text-align: left;
+  flex: 1 1 320px;
+  align-self: center;
 }
 
+/* Bento: one wide card on the left spans both rows,
+   two smaller cards stacked on the right. */
 .features__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 24px;
+  min-height: 720px;
 }
 
 .feature-card {
@@ -209,17 +210,16 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.feature-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.18);
+.feature-card--wide {
+  grid-row: span 2;
 }
 
 .feature-card__media {
   width: 100%;
-  aspect-ratio: 397 / 200;
+  flex: 1 1 auto;
+  min-height: 220px;
   overflow: hidden;
   background: var(--bg-mute);
 }
@@ -231,7 +231,7 @@
 }
 
 .feature-card__body {
-  padding: 32px;
+  padding: 28px 32px 32px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -314,11 +314,45 @@
   }
   .features__grid {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: 0;
     gap: 24px;
+  }
+  .feature-card--wide {
+    grid-row: auto;
   }
 
   .care {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+}
+
+/* Phone — tighten touch padding and typography. */
+@media (max-width: 520px) {
+  .hero {
+    aspect-ratio: 4 / 5;
+    min-height: 560px;
+  }
+  .hero__letters {
+    top: 30%;
+    left: 10%;
+    width: 80%;
+  }
+  .hero__lede { font-size: 16px; }
+  .hero__scroll {
+    width: 56px;
+    height: 56px;
+  }
+
+  .conv { gap: 32px; }
+  .conv__media { aspect-ratio: 4 / 3; }
+
+  .features { gap: 40px; }
+  .feature-card__media { min-height: 200px; }
+  .feature-card__body { padding: 20px 24px 24px; }
+  .feature-card__title { font-size: 20px; }
+
+  .care { gap: 28px; }
+  .care__media { aspect-ratio: 4 / 3; }
 }

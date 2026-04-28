@@ -1,6 +1,19 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CircleArrowDown, Rotate3D } from '../components/icons';
+import { ArrowRight, CircleArrowDown } from '../components/icons';
 import './HomePage.css';
+
+function useIsTouch() {
+  const [touch, setTouch] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: none), (max-width: 880px)');
+    const update = () => setTouch(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+  return touch;
+}
 
 const HERO_LEDE =
   'An indoor lawn, shaped for the way friends naturally sprawl, lean, and linger.';
@@ -20,22 +33,26 @@ const FEATURES = [
     body:
       "No cushions to arrange, no seats to claim. Tooftd's contoured hills let everyone find their own patch of ground — just like they would on a real lawn.",
     image: '/images/glb-feature-1.png',
+    span: 'wide',
   },
   {
     title: 'Tuft by Tuft',
     body:
       'Every square foot is hand-tufted to feel like the first warm patch of grass of the spring — soft enough to nap on, dense enough to hold a dozen people.',
     image: '/images/glb-feature-2.png',
+    span: 'tall',
   },
   {
     title: 'Shape the Meadow',
     body:
       'Rearrange the hills into a long picnic strip, a quiet corner, or a single round clearing. Tooftd reshapes the way your living room gathers.',
     image: '/images/glb-feature-3.png',
+    span: 'tall',
   },
 ];
 
 export default function HomePage() {
+  const isTouch = useIsTouch();
   return (
     <div className="home">
       {/* Hero ----------------------------------------------------- */}
@@ -56,7 +73,13 @@ export default function HomePage() {
           <div className="hero__overlay hero__overlay--bot" />
         </div>
         <div className="hero__foot">
-          <p className="hero__lede">{HERO_LEDE}</p>
+          <div className="hero__foot-left">
+            <p className="hero__lede">{HERO_LEDE}</p>
+            <Link to="/preorder" className="btn btn--ghost hero__cta">
+              <span>Preorder</span>
+              <span className="btn__icon"><ArrowRight /></span>
+            </Link>
+          </div>
           <a
             href="#conversation"
             className="hero__scroll"
@@ -86,7 +109,7 @@ export default function HomePage() {
               class="conv__model"
               src="/models/mossy-hills.glb"
               alt="Tooftd modular grass mat 3D render"
-              camera-controls
+              {...(!isTouch && { 'camera-controls': true })}
               auto-rotate
               auto-rotate-delay="800"
               rotation-per-second="14deg"
@@ -98,9 +121,6 @@ export default function HomePage() {
               camera-orbit="30deg 72deg 88%"
               field-of-view="28deg"
             />
-            <span className="conv__rotate" aria-hidden="true">
-              <Rotate3D size={48} />
-            </span>
           </figure>
         </div>
       </section>
@@ -115,7 +135,10 @@ export default function HomePage() {
 
           <div className="features__grid">
             {FEATURES.map((feature) => (
-              <article key={feature.title} className="feature-card">
+              <article
+                key={feature.title}
+                className={`feature-card feature-card--${feature.span}`}
+              >
                 <div className="feature-card__media">
                   <img src={feature.image} alt={feature.title} />
                 </div>

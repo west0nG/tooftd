@@ -91,12 +91,23 @@
   .footer__panel {
     border-radius: 48px 48px 0 0;
     padding: 48px var(--page-pad) 0;
+    gap: clamp(56px, 14vw, 120px);
   }
   .footer__inner {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+  .footer__heading { font-size: 22px; }
+  .footer__list a { font-size: 18px; }
   .footer__wordmark img {
-    transform: translateY(12%);
+    transform: translateY(14%);
+  }
+}
+
+@media (max-width: 520px) {
+  .footer { margin-top: 56px; }
+  .footer__panel {
+    border-radius: 32px 32px 0 0;
+    padding: 40px var(--page-pad) 0;
   }
 }

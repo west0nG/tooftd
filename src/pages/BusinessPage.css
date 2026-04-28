@@ -30,13 +30,34 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: clamp(16px, 2.5vw, 40px);
-  overflow: hidden;
+  margin: 0;
 }
 
-.ca-matrix__frame img {
+.ca-matrix__scroll {
   width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-sm);
+}
+
+.ca-matrix__scroll img {
+  width: 100%;
+  min-width: 720px;       /* keep matrix legible on narrow screens */
   height: auto;
   display: block;
+}
+
+.ca-matrix__caption {
+  margin-top: 12px;
+  padding: 0 4px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--ink-mute);
+  display: none;          /* only show the hint where scroll is needed */
+}
+
+@media (max-width: 720px) {
+  .ca-matrix__caption { display: block; }
 }
 
 /* Split ------------------------------------------------- */
@@ -125,9 +146,10 @@
   .ca-matrix__lede { text-align: left; }
   .ca-split,
   .ca-split--reverse { grid-template-columns: 1fr; gap: 40px; }
-  .ca-split__grid { grid-template-columns: repeat(2, 1fr); }
+  .ca-split__grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 }
 
 @media (max-width: 520px) {
-  .ca-split__grid { grid-template-columns: 1fr; }
+  .ca-split__grid { gap: 12px; }
+  .ca-thumb__name { font-size: 13px; }
 }

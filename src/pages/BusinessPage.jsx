@@ -37,12 +37,17 @@ export default function BusinessPage() {
             <h2 className="h-display">The landscape</h2>
             <p className="body-md ca-matrix__lede">{LANDSCAPE_LEDE}</p>
           </header>
-          <div className="ca-matrix__frame">
-            <img
-              src="/images/competitor-matrix.png"
-              alt="Competitive analysis matrix"
-            />
-          </div>
+          <figure className="ca-matrix__frame">
+            <div className="ca-matrix__scroll" tabIndex="0" aria-label="Scroll matrix horizontally">
+              <img
+                src="/images/competitor-matrix.png"
+                alt="Two-axis competitive matrix. Vertical axis: solo to group seating. Horizontal axis: rigid to soft surface. Sectionals, beanbags, and gaming chairs cluster around solo or rigid quadrants. Tooftd sits alone in the soft + group quadrant."
+              />
+            </div>
+            <figcaption className="ca-matrix__caption">
+              Tip: drag horizontally on small screens to read the full matrix.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -78,8 +83,13 @@ export default function BusinessPage() {
       </section>
 
       <section className="section section--cta">
-        <div className="cta-band">
-          <h2 className="h-display cta-band__title">Tooftd is different.</h2>
+        <div className="cta-band cta-band--turf has-grass" style={{ '--texture-opacity': 0.32 }}>
+          <div className="cta-band__copy">
+            <p className="eyebrow eyebrow--ondark">The case</p>
+            <h2 className="h-display cta-band__title">
+              Tooftd is<br />different.
+            </h2>
+          </div>
           <Link to="/preorder" className="btn btn--light">
             <span>Preorder</span>
             <span className="btn__icon"><ArrowRight /></span>

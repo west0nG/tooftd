@@ -156,11 +156,11 @@ export default function HomePage() {
       <section className="section section--care">
         <div className="care">
           <figure className="care__media">
-            <img src="/images/figma/grass-close-4c1299.png" alt="Grass texture detail" />
+            <img src="/images/care-photo.png" alt="Tooftd lawn in a sunlit loft, with friends working and reading on it" />
           </figure>
           <div className="care__copy">
             <h2 className="h-display">
-              Developed with care<br />&amp; thoughtfulness
+              Developed with care &amp; thoughtfulness
             </h2>
             <p className="body-md">{CARE_COPY}</p>
             <Link to="/preorder" className="btn care__btn">

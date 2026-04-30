@@ -287,8 +287,16 @@
   display: flex;
   flex-direction: column;
   gap: 23px;
-  max-width: 420px;
   align-items: flex-start;
+}
+
+.care__copy .h-display {
+  font-size: clamp(22px, 2.4vw, 32px);
+  white-space: nowrap;
+}
+
+.care__copy .body-md {
+  max-width: 480px;
 }
 
 .care__btn {
@@ -347,6 +355,10 @@
   .care {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+  .care__copy .h-display {
+    white-space: normal;
+    font-size: clamp(28px, 7vw, 36px);
   }
 }
 

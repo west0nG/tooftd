@@ -25,7 +25,7 @@ const FEATURES_LEDE =
   'Every inch of Tooftd is modeled on the things a real lawn does well — the give of the turf, the slope of a hill, the way a group naturally spreads out across it.';
 
 const CARE_COPY =
-  "We studied real lawns for two years — the density of spring grass, the give underfoot, the way a gentle slope invites you to lie across it instead of sit up straight. The result is a piece of furniture that feels like the outdoors remembered, built carefully enough to live with you for a long time.";
+  "We studied real lawns for three months — the density of spring grass, the give underfoot, the way a gentle slope invites you to lie across it instead of sit up straight. The result is a piece of furniture that feels like the outdoors remembered, built carefully enough to live with you for a long time.";
 
 const FEATURES = [
   {

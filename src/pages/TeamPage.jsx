@@ -6,10 +6,11 @@ const HERO_LEDE =
   "We're a small group of design and engineering students at USC building Tooftd as our senior project.";
 
 const PRODUCT_TEAM = [
-  { name: 'Laila LaDuke', photo: '/images/team/laila.jpg', bio: 'Product Designer' },
-  { name: 'Ben Flora', photo: '/images/team/ben.jpg', bio: 'Product Designer' },
-  { name: 'Anika Mantripragada', photo: '/images/team/anika.jpg', bio: 'Product Designer' },
-  { name: 'Clarence Keith', photo: '/images/team/clarence.jpg', bio: 'Product Designer' },
+  { name: 'Laila LaDuke', photo: '/images/team/laila.jpg', bio: 'Physical Prototyping' },
+  { name: 'Ben Flora', photo: '/images/team/ben.jpg', bio: 'Industrial Designer' },
+  { name: 'Anika Mantripragada', photo: '/images/team/anika.jpg', bio: 'Brand Designer' },
+  { name: 'Badria Kazim', photo: '/images/team/badria.jpg', bio: 'Product Manager' },
+  { name: 'Clarence Keith', photo: '/images/team/clarence.jpg', bio: '3D Designer' },
 ];
 
 const WEB_TEAM = [

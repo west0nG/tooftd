@@ -6,6 +6,7 @@ import './Navbar.css';
 const navLinks = [
   { path: '/team', label: 'Team' },
   { path: '/business', label: 'Business' },
+  { path: '/behind-the-scenes', label: 'Behind the scenes' },
 ];
 
 export default function Navbar() {
@@ -14,6 +15,7 @@ export default function Navbar() {
   const location = useLocation();
 
   const isHome = location.pathname === '/';
+  const isBehindScenes = location.pathname === '/behind-the-scenes';
 
   useEffect(() => {
     setMenuOpen(false);
@@ -36,7 +38,7 @@ export default function Navbar() {
     }
   }, [menuOpen]);
 
-  const onHero = isHome && !scrolled;
+  const onHero = (isHome && !scrolled) || isBehindScenes;
 
   return (
     <nav className={`navbar ${onHero ? 'navbar--hero' : 'navbar--solid'} ${menuOpen ? 'navbar--menu-open' : ''}`}>

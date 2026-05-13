@@ -5,6 +5,7 @@ const discoverLinks = [
   { path: '/', label: 'Home' },
   { path: '/team', label: 'Team' },
   { path: '/business', label: 'Business' },
+  { path: '/behind-the-scenes', label: 'Behind the scenes' },
   { path: '/preorder', label: 'Preorder' },
 ];
 
